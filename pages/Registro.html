@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title>HTML Visual Code</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+    </head>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <body class="cuerpo">
+        <header> 
+          <table class="encabezado">
+            <tr>
+              <td width="1000px"></td>
+              <td width="67px" align="left"><a href="../Index.html" target="_blank"> <strong>Inicio</strong></a>
+              </td>
+              <td width="80px" align="left"><a href="../pages/Producto.html" target="_blank"><strong>Productos</strong></a>
+              </td>
+              <td width="83px" align="left"><a href="../pages/Login.html" target="_blank"><strong>Login</strong></a> </td>
+            </tr>
+          </table>
+            <div class="menu"> 
+                <div class="encab">
+                    <img src = "../images/logo.png" width=100 height="80\">
+                </div>
+                    <div  class="form">
+                        <a><H1>BIENVENIDOS A CLINIQUE</H1></a>  
+                    </div>           
+        </div>
+        </header>
+
+        <section class="fregistrar">
+          <aside class=" grid-leftaside">
+            <h3>.</h3>
+        </aside>
+
+        <aside class="grid-rigthtaside">
+            <h3>.</h3>
+        </aside>
+
+            <main class="grid-main">
+             <h3>Registrate</h3>
+                <BR>
+                <form onsubmit="return validarform();" >
+            
+                        <div">
+                            <input  class="gridData type ="text"
+                                name ="txtNombre"
+                                id = "idNombre"
+                                required
+                                placeholder="Ingrese Nombre"
+                            >           
+                        </div>
+
+                        <div>
+                            <input class="gridData type ="text"
+                                name ="txtapellido"
+                                id = "idapellido"
+                                required
+                                placeholder="Ingrese Apellido"
+                            >           
+                        </div>
+
+                        <div>
+                            <input class="gridData type ="text"
+                                name ="txtDireccion"
+                                id = "idDireccion"
+                                required
+                                placeholder="Ingrese su Direccion"
+                            >           
+                        </div>
+                       
+                        <div>
+                            <input class="gridData type ="email"
+                                name ="txtEmail"
+                                id = "idEmail"
+                                required
+                                placeholder="Ingrese su Email"
+                            >           
+                        </div>
+                        
+                        <div>
+                            <input class="gridData type ="contrasena"
+                                name ="txtcontrasena"
+                                id = "idContrasena"
+                                required
+                                placeholder="Ingrese su Contraseña"
+                            >           
+                        </div>
+                        <p>De acuerdo con Terminos y Condiciones</p>
+                       
+                        <div >
+                            <input class="botons" type="submit" value="Registrar">
+                        </div>
+                        
+                            <nav>¿Ya tienes una cuenta? <a href="../pages/Login.html" target="_blank">Ingresar</a ></nav>
+
+                </form>
+
+               
+              
+
+            </main>
+         
+        </section>  
+
+
+        <div id="pie">
+          <table class="encabezado1">
+            <tr>
+              <td></td>
+            </tr>
+            <tr>
+              <td align="center"><strong>Necesitas ayuda</strong></td>
+            </tr>
+            <tr>
+              <td align="center"><strong>Llamanos al 900 800 700</strong></td>
+            </tr>
+            <tr>
+              <td align="center"><strong>Atencion al cliente</strong></td>
+            </tr>
+            <tr>
+              <td align="center"><strong>Terminos y condiciones</strong></td>
+            </tr>
+          </table>
+        </div>
+
+        <script src="../js/script.js"></script>
+        <script type ="text/javascript">revisarPedido()</script>
+
+    </body>
+</html>

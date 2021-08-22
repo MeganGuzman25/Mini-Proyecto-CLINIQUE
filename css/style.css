@@ -1,0 +1,282 @@
+#contenedor {
+  float: left;
+  width: 1250px;
+  }
+  
+  #tabla1 {
+  float: left;
+  width: 300px;
+  }
+  
+  #tabla1 table {
+  text-align: center;
+  }
+  
+  #tabla1 table tr td {
+  width: 400px;
+  }
+  
+  #tabla2 {
+  float: right;
+  width: 900px;
+  }
+  
+  #tabla2 table {
+  text-align: center;
+  }
+  
+  #tabla2 table tr td {
+  width: 900px
+  }
+
+
+table.encabezado {
+  background-color: grey;
+   padding: 10px;
+   width: 101%;
+   color: white;
+} 
+
+body.bodyagregar{
+  background: url("../images/Fondo3.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+} 
+body.index{
+  background: url("../images/fondoindex.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+} 
+
+th.titulo{
+      font-size: 30px;
+      font-family: 'Gill Sans';
+      font-style: italic;
+      font-size: 20px;
+      align-content: center;
+} 
+
+.contenedor{
+  width: 1250px;
+  padding: 5px;
+  align-content: center;
+} 
+.contenido{
+  width: 1250px;
+  padding: 5px;
+} 
+
+table.encabezado1 {
+  background-color: grey;
+  width: 101%;
+  padding: 50px;
+  margin: -10px;
+   align-content: center;
+} 
+
+div.titulo1{
+   background-color: grey;
+   padding: 7px;
+   width: 1250px;
+   font-size: 30px;
+   font-family: 'Gill Sans';
+   font-style: italic;
+   font-size: 20px;
+} 
+.contenedorR{
+  width: 500px;
+  padding: 15px;
+  align-items: center;
+  text-align: center;
+} 
+
+
+/*FOMULARIO*/
+/*Tamaño principal del formulario*/
+.form{
+width: 80%;
+height: px;
+float: center;
+}
+/*Se aplican a todos los elementos a de la clase menu*/
+.menu a{
+    font-size: 30px;
+    color:black;
+}
+
+.cuerpo{
+    width: 100%;
+    height: 100%;
+}
+
+.fregistrar{
+    width: 100%;
+    height: 850px;
+    background: url("../images/fondologin.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    color:white;
+}
+
+.grid-mein{
+  background-color: black;
+    grid-template-columns: 1fr 4fr 1fr;
+    height: 100%;
+    padding: 20px;
+    margin:auto;
+    border-radius: 4px;
+    font-family: calibri;
+
+}
+
+/*Se aplica a todos los elementos h3 de la clase grid-main*/
+.grid-mein h3{
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.grid-main{
+    background-color:rgb(64, 196, 163);
+    color: white;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+    height: 500px;
+    width: 400px;;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: calibri;
+    color: white;
+    border: 1px solid #020b30;
+    box-shadow: 1px 1px 10px #191717;
+}
+
+.fregistrar h3{
+font-size: 22px;
+margin-bottom: 20px;
+margin: auto;
+padding: 0;
+}
+/*Propiedades para gridData*/
+.gridData{
+    width: 100%;
+    height: 50px;
+    background-color: #24303c;
+    padding: 12px;
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+    margin-bottom: 16px;
+    border:1px solid #1656A6;
+    font-family: Cambria;
+    font-size: 18px;
+    color: white;
+}
+/*Selector por elemento*/
+.fregistrar p{
+    height: 40px;
+text-align: center;
+font-size: 18px;
+}
+/*Selector por elemento*/
+.fregistrar a{
+    color:white;
+    text-decoration: none;
+}
+/*Hover para los elementos a de la clase fregistrar*/
+.fregistrar a :hover {
+color: white;
+text-decoration: underline;
+}
+/*Elemento p de la clase fregistrar*/
+.fregistrar p {
+height: 40px;
+text-align: center;
+font-size: 18px;
+}
+/*Selector por clases*/
+.fregistrar .botons{
+width: 100%;
+background-color: #1656A6;
+border: none;
+padding: 10px;
+color: white;
+margin:5px 0px 20px 0px;
+font-size: 16px;
+}
+
+
+/*Login principal en esta parte se le da estilo a el login principal*/
+.grid-login{
+    background-color:rgb(85, 141, 113);
+    color: white;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+    height: 400px;
+    width: 300px;;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    font-family: calibri;
+    color: white;
+    border: 1px solid #020b30;
+    box-shadow: 1px 1px 10px gray;
+}
+}
+/*Selector por clase*/
+.form-login{
+    color: white;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: center;
+    height: 300px;
+    width: 300px;;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-family: calibri;
+    color: white;
+    padding-top: 30px;
+}
+/*Selector por clase*/
+.gridD{
+    width: 100%;
+    height: 50px;
+    background-color: rgb(119, 218, 204);
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 2fr 6fr;
+    margin-bottom: 16px;
+    border: 0;
+    border-bottom: 1px solid white;
+    font-family: Cambria;
+    font-size: 15px;  
+    color: white; 
+}
+
+.check1{
+padding-top: 40px;
+}
+/*Propiedades para el boton*/
+.boton
+{
+    width: 100%;
+    background-color: #55c4be;
+    border: none;
+    padding: 10px;
+    color: white;
+    margin:5px 0px 20px 0px;
+    font-size: 16px;
+}
+/*Utilizamos la clase overf para ayudar a dar las propiedades de hover al elemento a*/
+.overf{
+color: white;
+}
+
+.overf a :hover{
+    color: blue;
+}
