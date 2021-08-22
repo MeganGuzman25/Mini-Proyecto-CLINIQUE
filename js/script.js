@@ -1,13 +1,17 @@
 var productos = [];
 var reciente = [];
+var ordenesTemp = [];
+var recienteOrdenes=[];
+var itemsOrdenesTemp =[];
 var recientesItems = [];
-
+var itemsStock = [];
 
 //Objeto usuario
 function objUsuario(idUsuario, tipoUsuario){
 	this.idUsuario = idUsuario,
 	this.tipoUsuario = tipoUsuario
 }
+
 
 
 // Limpiar datos de autenticacino del usuario
@@ -26,10 +30,6 @@ function enviarform(){
 	const usuarioadmin = "admin";
 	const contrasenaadmin ="1234";
 
-	const usuariodueno = "dueno";
-	const contrasenadueno ="1234";
-	
-	
 	let idUsuario = document.getElementById("idUsuario").value;
 	let contrasenaUsuario = document.getElementById("contrasena").value;
 	
@@ -51,7 +51,7 @@ function enviarform(){
 		var usu = new objUsuario(usuariodueno, 1);
 		localStorage.removeItem("usuario");
 		localStorage.setItem("usuario", JSON.stringify(usu));
-		window.location.replace("RealizarCompra.html"),true;
+		window.location.replace("RealizarCompra.html");
 
 	}
 	else{
@@ -79,7 +79,7 @@ function validarPermisos(tipoPermiso){
 	if(datosUsuario != null){
 
 		if(datosUsuario.tipoUsuario != tipoPermiso){
-			window.location.replace("Error.html");
+			window.location.replace("errorPermisos.html");
 		}
 		console.log(datosUsuario.idUsuario)
 
@@ -155,6 +155,7 @@ function llenarArreglo(){
 			}
 
 		}
+		
 	}
 
 	//Si el codigo no existe
@@ -215,12 +216,14 @@ function mostrarProductos(){
 		scriptTabla+="<tr>";
 		scriptTabla+="<td>"+guardados[index].codigo+"</td>";
 		scriptTabla+="<td>"+guardados[index].nombre+"<br><br><label for=\""+guardados[index].codigo+"\">Cantidad: </label> <input type=\"number\" id=\""+"c"+guardados[index].codigo+"\"></td>";
-		scriptTabla+="<td>"+guardados[index].precio+"<br><br><input type=\"button\" value=\"Agregar al carrito\" id=\""+guardados[index].codigo+"\" onclick=\"agregarCarrito(this.id)\"></td>";
+		scriptTabla+="<td>Q "+guardados[index].precio+"<br><br><input type=\"button\" value=\"Agregar al carrito\" id=\""+guardados[index].codigo+"\" onclick=\"agregarCarrito(this.id)\"></td>";
 		scriptTabla+="<td><img src=\""+guardados[index].imagen+"\" width=\"75px\"></td>";
 		scriptTabla+="</tr>";
 	}
 	//La propiedad innerHTML por medio de un ID nos sirve para cambiar o recuperar datos de una etiqueta, div, p etc
 	document.getElementById("idTableBody2").innerHTML = scriptTabla;
+	
+
 
 }
 //Objeto para el pedido
@@ -332,7 +335,7 @@ function revisarPedido(){
 
 		scriptTabla+="<tr>";
 		scriptTabla+="<td>"+carrito[index].codigo+"</td>";
-		scriptTabla+="<td>"+carrito[index].nombre+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>"
+		scriptTabla+="<td>"+carrito[index].nombre+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src=\""+carrito[index].imagen+"\" width=\"75px\"></td>"
 		scriptTabla+="<td>"+carrito[index].cantidad+"<br><br><label for=\""+carrito[index].codigo+"\">Cantidad: </label> <input type=\"number\" id=\""+"c"+carrito[index].codigo+"\" onchange=\"actualizarCantidad(this.id)\">&nbsp;&nbsp;&nbsp;&nbsp;<input type=\"button\" value=\"Descartar\" id=\""+carrito[index].codigo+"\" onclick=\"quitarCarrito(this.id)\"></td>";
 		scriptTabla+="<td>Q "+carrito[index].precio+"</td>";
 		scriptTabla+="<td>Q "+carrito[index].cantidad*carrito[index].precio+"</td>";
@@ -529,153 +532,6 @@ limpiarTabla(){
 
 }
 */
-
-
-
-
-
-
-var arrProds = [];
-function AgregarOC(){
-	
-	//console.log("agregando")
-	var fecha = new Date();
-	var codigoOrden = document.getElementById("idOrden").value;
-	var fechaEntrega = document.getElementById("fechaE").value;
-	var idProveedor = document.getElementById("idProv").value;
-	var fechaActual = fecha.getDate() + "/"+ fecha.getMonth()+ "/" +fecha.getFullYear();
-	
-	var codigoProd = document.getElementById("idProd").value;
-	var cantProd = document.getElementById("cantP").value;
-	
-	if(codigoOrden === "" || fechaEntrega === "" || idProveedor === "" || codigoProd === "" || cantProd === ""){
-		
-		alert("No se han compleatado los datos requeridos");
-		return false;
-		
-	}
-	
-	
-	var codigoExiste = false;
-	
-	
-	//Verificar si existe la orden de compra para almacenarla
-	var existeOrden = false;
-	var ordenes = JSON.parse(localStorage.getItem("ordenes"))
-	if(ordenes != null){
-		ordenesTemp = JSON.parse(localStorage.getItem("ordenes"));
-		//Recoger el arreglo de ordenes para verificar que no exista la ingresada
-		for(var i=0; i<ordenes.length; i++){
-			if(ordenes[i].codigoOrden == codigoOrden){
-				existeOrden = true;
-				
-			}
-		}
-				
-	}
-	
-	if(!existeOrden){
-		var orden = new objOrden(codigoOrden, fechaActual, fechaEntrega, idProveedor, 1);
-		
-		
-		
-		recienteOrdenes.push(orden);
-		ordenesTemp.push(orden);
-		
-		localStorage.removeItem("ordenes");
-		localStorage.setItem("ordenes", JSON.stringify(ordenesTemp));
-	}
-
-	//console.log(existeOrden)
-	
-	
-	
-	
-	
-	//Buscar producto segun codigo codigoP
-	
-	if(localStorage.getItem("registro") != null){
-		productos = JSON.parse(localStorage.getItem("registro"));
-
-		//Recoger el arreglo de productos
-		for(var i=0; i<productos.length; i++){
-			//Validacion que no puedan haber dos codigos iguales
-			if (productos[i].codigo == codigoProd) {
-				
-				if(localStorage.getItem("ordenItems") != null){
-					itemsOrdenesTemp = JSON.parse(localStorage.getItem("ordenItems"));
-				}
-				var prod = new objOrdenItems(codigoOrden, productos[i].codigo, productos[i].nombre, productos[i].precio, cantProd);
-				
-				
-				recientesItems.push(prod);
-				itemsOrdenesTemp.push(prod);
-				
-				
-				
-				localStorage.removeItem("ordenItems");
-				localStorage.setItem("ordenItems", JSON.stringify(itemsOrdenesTemp));
-				
-				codigoExiste = true;
-				
-			}
-
-		}
-	}
-	
-	//console.log(arrProds);
-	//return;
-	
-	
-	if(!codigoExiste){
-		alert("No se encontró el producto solicitado");
-	} else{
-		
-		var scriptTabla="";
-		for(var index=0; index<recientesItems.length; index++){
-			scriptTabla+="<tr>";
-			scriptTabla+="<td>"+recientesItems[index].codigoProducto+"</td>";
-			scriptTabla+="<td>"+recientesItems[index].nombreProducto+"</td>";
-			scriptTabla+="<td>Q "+recientesItems[index].precio+"</td>";
-			scriptTabla+="<td>"+recientesItems[index].cantidad+"</td>";
-			
-			var subTotal = recientesItems[index].precio * recientesItems[index].cantidad;
-			
-			scriptTabla+="<td>Q "+subTotal+"</td>";
-			scriptTabla+="</tr>";
-		}
-		
-		document.getElementById("tablaProductosBody").innerHTML = scriptTabla;
-		
-		document.getElementById("idProd").value = "";
-		document.getElementById("cantP").value = "";
-		document.getElementById("idProd").select();
-		
-		
-	}
-	
-	/*
-	var prod = new objproducto(codigo, nombre, precio, imagen,0);
-	arrProds.push(prod);
-	
-	console.log(arrProds);
-	*/
-
-}
-
-
-function nuevaOrden(){
-	document.getElementById("tablaProductosBody").innerHTML = "";
-	document.getElementById("idOrden").value = "";
-	document.getElementById("fechaE").value = "";
-	document.getElementById("idProv").value ="" ;
-	
-	document.getElementById("idOrden").select();
-	recientesItems = [];
-	
-}
-
-
 
 
 
